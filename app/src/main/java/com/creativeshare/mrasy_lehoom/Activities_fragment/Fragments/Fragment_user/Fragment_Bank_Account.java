@@ -46,6 +46,8 @@ public class Fragment_Bank_Account extends Fragment {
 
             back.setRotation(180);
         }
+        if(bank_account!=null){
+
         if (preferences.getlang(activity).equals("ar")) {
             bank_txt.setText(bank_account.getInnerData().getBank_details());
         } else {
@@ -55,7 +57,7 @@ public class Fragment_Bank_Account extends Fragment {
                 finalbankaccount+="bank account : " + bank_accountaa[1]+"\n";
             }
             bank_txt.setText(finalbankaccount);
-        }
+        }}
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

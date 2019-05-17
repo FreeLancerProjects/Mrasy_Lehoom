@@ -107,16 +107,21 @@ public class Fragment_More extends Fragment {
         terms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+if(setting_models!=null){
 if(preferences.getlang(activity).equals("ar")){
+
                 activity.DisplayFragmentTerms_Condition(setting_models.getInnerData().getTerms_and_conditions());}
 else{
-    activity.DisplayFragmentTerms_Condition(setting_models.getInnerData().getTerms_and_conditions_en());}
+    activity.DisplayFragmentTerms_Condition(setting_models.getInnerData().getTerms_and_conditions_en());}}
+else {
+    activity.DisplayFragmentTerms_Condition(null);}
+
+            }
 
             }
 
 
-        });
+        );
         lang_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

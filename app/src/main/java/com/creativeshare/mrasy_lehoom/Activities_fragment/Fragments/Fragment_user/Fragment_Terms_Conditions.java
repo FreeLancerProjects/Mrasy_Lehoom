@@ -49,7 +49,8 @@ Fragment_Terms_Conditions fragment_terms_conditions=new Fragment_Terms_Condition
         back = (ImageView) view.findViewById(R.id.back2);
         activity = (Home_Activity) getActivity();
         preferences = Preferences.getInstance();
-        terms_cond.setText(getArguments().getString(terms));
+        if(getArguments().getString(terms)!=null){
+        terms_cond.setText(getArguments().getString(terms));}
         if (preferences.getlang(activity).equals("en")) {
 
             back.setRotation(180);
