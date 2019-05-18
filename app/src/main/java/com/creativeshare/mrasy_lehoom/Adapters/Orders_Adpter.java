@@ -51,7 +51,7 @@ public class Orders_Adpter extends RecyclerView.Adapter<Orders_Adpter.Eyas_Holde
         String time[] = model.getCreated_at().split("\\s");
         String time2[] = time[1].split(":");
         String timemode;
-        if (Integer.parseInt(time2[0]) > 12) {
+        if (Integer.parseInt(time2[0]) <= 12&&Integer.parseInt(time2[0])>0) {
             if (preferences.getlang(context).equals("ar")) {
                 timemode = "صباحا";
             } else {
