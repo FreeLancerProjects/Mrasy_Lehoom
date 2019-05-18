@@ -38,6 +38,9 @@ public class Fragment_Contact_US extends Fragment {
     private EditText name, email, message;
     private Button send;
     private ImageView back;
+    public static Fragment_Contact_US newInstance() {
+        return new Fragment_Contact_US();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -122,9 +125,6 @@ public class Fragment_Contact_US extends Fragment {
     }
 
 
-    public static Fragment_Contact_US newInstance() {
-        return new Fragment_Contact_US();
-    }
 
 
 }
