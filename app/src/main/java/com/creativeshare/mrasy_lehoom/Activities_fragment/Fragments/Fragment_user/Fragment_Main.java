@@ -49,13 +49,11 @@ public class Fragment_Main extends Fragment {
     private TabLayout indicator;
     private Home_Activity activity;
     private int current_page = 0,NUM_PAGES;
-    private Timer timer;
     private TextView error;
     private ProgressBar progBar, progBarAds;
     private RecyclerView recc;
     private Catogries_Adapter eas;
     private SlidingImage_Adapter slidingImage__adapter;
-    private boolean isloading = true;
 
     public static Fragment_Main newInstance() {
         return new Fragment_Main();

@@ -50,13 +50,13 @@ public class Sign_Up extends AppCompatActivity {
         String sinup_phone = phone.getText().toString();
         String sinup_pass=pass.getText().toString();
         String sinup_name=name.getText().toString();
-        if(sinup_phone.isEmpty()||sinup_pass.isEmpty()||sinup_name.isEmpty()){
+        if(sinup_phone.isEmpty()||sinup_pass.isEmpty()||sinup_pass.length()<6||sinup_name.isEmpty()){
            dialog.dismiss();
 
             if(sinup_phone.isEmpty()){
                 phone.setError("");
             }
-            if(sinup_pass.isEmpty()){
+            if(sinup_pass.isEmpty()||sinup_pass.length()<6){
                 pass.setError("");
 
             }

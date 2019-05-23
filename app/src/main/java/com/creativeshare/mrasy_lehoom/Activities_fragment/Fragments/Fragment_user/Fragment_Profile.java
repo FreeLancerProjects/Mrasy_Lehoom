@@ -56,10 +56,10 @@ public class Fragment_Profile extends Fragment {
     private void intitview(final View view) {
         preferences = Preferences.getInstance();
         activity = (Home_Activity) getActivity();
-        phone = (EditText) view.findViewById(R.id.account_phone);
-        name = (EditText) view.findViewById(R.id.account_name);
-        pass = (EditText) view.findViewById(R.id.account_pass);
-        edit = (Button) view.findViewById(R.id.edit_account);
+        phone = view.findViewById(R.id.account_phone);
+        name =  view.findViewById(R.id.account_name);
+        pass = view.findViewById(R.id.account_pass);
+        edit =  view.findViewById(R.id.edit_account);
         usermodel = preferences.getUserData(activity);
         phone.setText(usermodel.getData().getMobile());
         name.setText(usermodel.getData().getName());
@@ -77,12 +77,12 @@ public class Fragment_Profile extends Fragment {
         String user_phone = phone.getText().toString();
         String user_name = name.getText().toString();
         String user_pass = pass.getText().toString();
-        if (user_name.isEmpty() || user_pass.isEmpty() || user_phone.isEmpty()) {
+        if (user_name.isEmpty() || user_pass.isEmpty()||user_pass.length()<6 || user_phone.isEmpty()) {
             if (user_name.isEmpty()) {
                 name.setError("");
 
             }
-            if (user_pass.isEmpty()) {
+            if (user_pass.isEmpty()||user_pass.length()<6) {
                 pass.setError("");
             }
             if (user_phone.isEmpty()) {
