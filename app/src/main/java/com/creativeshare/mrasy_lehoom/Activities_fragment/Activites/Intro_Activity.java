@@ -3,23 +3,32 @@ package com.creativeshare.mrasy_lehoom.Activities_fragment.Activites;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.creativeshare.mrasy_lehoom.Language.Language;
 import com.creativeshare.mrasy_lehoom.preferences.Preferences;
 import com.creativeshare.mrasy_lehoom.R;
 import com.google.android.material.tabs.TabLayout;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.util.ArrayList;
+
+import static java.lang.Runtime.getRuntime;
 
 public class Intro_Activity extends AppCompatActivity {
     private ViewPager viewPager;
@@ -27,6 +36,8 @@ public class Intro_Activity extends AppCompatActivity {
     private Button start;
     private Intro_Pager_Adapter intro_pager_adapter;
     Preferences preferences;
+private  int count=0;
+private ArrayList<View> views;
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(Language.updateResources(newBase, Language.getLanguage(newBase)));
@@ -45,12 +56,14 @@ public class Intro_Activity extends AppCompatActivity {
             start=findViewById(R.id.btn_next);
             indicator.setupWithViewPager(viewPager);
             viewPager.setAdapter(intro_pager_adapter);
+            views=new ArrayList<>();
 start.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         preferences.create_first_time(Intro_Activity.this,false);
         Intent i = new Intent(Intro_Activity.this,Login.class);
         startActivity(i);
+        finish();
     }
 });
             ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -89,19 +102,17 @@ start.setOnClickListener(new View.OnClickListener() {
         public Object instantiateItem(ViewGroup container, int position) {
 try {
 
-        view = layoutInflater.inflate(layouts[position], container, false);
-        /*ImageView imageView = view.findViewById(R.id.item_image);
-      //  Glide.with(intro_activity).load(getResources().getDrawable(image[position])).skipMemoryCache(true).into(imageView);
-         imageView.setImageBitmap(BitmapFactory.decodeResource(getResources(),image[position]));*/
-
-        container.addView(view);
+    view = layoutInflater.inflate(layouts[position], container, false);
+    ImageView imageView = view.findViewById(R.id.item_image);
+Picasso.with(intro_activity).load(image[position]).fit().memoryPolicy(MemoryPolicy.NO_CACHE).into(imageView);
+container.addView(view);
 
 
 
 
 
 }catch (OutOfMemoryError e){
-    deleteCache(getApplicationContext());
+    Log.e("Error",e.getCause()+"");
 }
 
             return view;
@@ -119,31 +130,9 @@ try {
 
         @Override
         public void destroyItem(@NonNull ViewGroup collection, int position, Object view) {
-            View itemView = (View)view;
+            /*View itemView = (View)view;
             collection.removeView(itemView);
-            itemView=null;
-        }
-        public void deleteCache(Context context) {
-            try {
-                File dir = context.getCacheDir();
-                deleteDir(dir);
-            } catch (Exception e) {}
-        }
-        public  boolean deleteDir(File dir) {
-            if (dir != null && dir.isDirectory()) {
-                String[] children = dir.list();
-                for (int i = 0; i < children.length; i++) {
-                    boolean success = deleteDir(new File(dir, children[i]));
-                    if (!success) {
-                        return false;
-                    }
-                }
-                return dir.delete();
-            } else if(dir!= null && dir.isFile()) {
-                return dir.delete();
-            } else {
-                return false;
-            }
+            itemView=null;*/
         }
     }
 

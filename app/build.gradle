@@ -6,11 +6,12 @@ android {
         applicationId "com.creativeshare.mrasy_lehoom"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 5
+        versionCode 6
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
+
     lintOptions {
         checkReleaseBuilds false
         // Or, if you prefer, you can continue to check for errors in release builds,
