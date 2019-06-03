@@ -5,6 +5,7 @@ package com.creativeshare.mrasy_lehoom.Adapters;
 import android.content.Context;
 
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,8 @@ Context context;
     public void onBindViewHolder(@NonNull final Eyas_Holder viewHolder, int i) {
         Offers_Model.InnerData model=list.get(i);
         viewHolder.txt2.setText(model.getName());
+        Log.e("im",model.getImage());
+
         Picasso.with(context).load(Uri.parse(Tags.base_IMage_url+model.getImage())).fit().into(viewHolder.frameLayout);
 
         //viewHolder.frameLayout.setImageResource(model.image);

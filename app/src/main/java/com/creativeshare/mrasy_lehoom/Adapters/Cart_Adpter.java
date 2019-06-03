@@ -2,6 +2,7 @@ package com.creativeshare.mrasy_lehoom.Adapters;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,7 @@ public class Cart_Adpter extends RecyclerView.Adapter<Cart_Adpter.Eyas_Holder> {
 
 
         viewHolder.total.setText(model.getQuantity() + "");
+        Log.e("im",model.getImage());
         Picasso.with(context).load(Uri.parse(Tags.base_IMage_url+model.getImage())).fit().into(viewHolder.frameLayout);
 
 
@@ -62,11 +64,10 @@ public class Cart_Adpter extends RecyclerView.Adapter<Cart_Adpter.Eyas_Holder> {
 
         public Eyas_Holder(@NonNull View itemView) {
             super(itemView);
-            name = (TextView) itemView.findViewById(R.id.cart_name);
-            price = (TextView) itemView.findViewById(R.id.cart_price);
-            total = (TextView) itemView.findViewById(R.id.total_cart);
-
-            frameLayout = (CircleImageView) itemView.findViewById(R.id.image_cart);
+            name =  itemView.findViewById(R.id.cart_name);
+            price =  itemView.findViewById(R.id.cart_price);
+            total =  itemView.findViewById(R.id.total_cart);
+            frameLayout =  itemView.findViewById(R.id.image_cart);
 
 
         }

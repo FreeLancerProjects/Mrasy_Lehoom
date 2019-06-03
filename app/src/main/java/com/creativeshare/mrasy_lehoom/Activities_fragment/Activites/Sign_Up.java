@@ -66,7 +66,7 @@ public class Sign_Up extends AppCompatActivity {
             }
         }
         else{
-            if(Common.isValidMobile(sinup_phone)==true){
+            if(Common.validateUsing_libphonenumber("00966",sinup_phone)==true){
             Common.CloseKeyBoard(Sign_Up.this,view);
 
             Api.getService()

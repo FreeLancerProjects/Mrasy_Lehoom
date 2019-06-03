@@ -2,6 +2,7 @@ package com.creativeshare.mrasy_lehoom.Adapters;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,9 +40,11 @@ public class Product_Offers_Adapter extends RecyclerView.Adapter<Product_Offers_
     }
 
     @Override
-    public void onBindViewHolder(final Eyas_Holder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final Eyas_Holder viewHolder, int i) {
         Model_Offr_Product.InnerData.Prods model=list.get(i);
         viewHolder.name.setText(model.getName());
+        Log.e("im",model.getImage());
+
         Picasso.with(context).load(Uri.parse(Tags.base_IMage_url+model.getImage())).fit().into(viewHolder.frameLayout);
     viewHolder.price.setText(model.getPrice()+"");
 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -66,9 +69,9 @@ viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
         RoundedImageView frameLayout;
         public Eyas_Holder(View itemView) {
             super(itemView);
-           name=(TextView)itemView.findViewById(R.id.type_name);
-            frameLayout=(RoundedImageView) itemView.findViewById(R.id.img_type);
-            price=(TextView)itemView.findViewById(R.id.type_price);
+           name=itemView.findViewById(R.id.type_name);
+            frameLayout= itemView.findViewById(R.id.img_type);
+            price=itemView.findViewById(R.id.type_price);
 
 
         }

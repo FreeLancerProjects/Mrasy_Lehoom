@@ -18,6 +18,9 @@ import androidx.core.content.ContextCompat;
 import com.creativeshare.mrasy_lehoom.Adapters.Orders_Adpter;
 import com.creativeshare.mrasy_lehoom.Activities_fragment.Activites.Home_Activity;
 import com.creativeshare.mrasy_lehoom.R;
+import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber;
 
 public class Common {
     public  static int re =0;
@@ -303,5 +306,22 @@ public class Common {
     public static boolean isValidMobile(String phone) {
         return android.util.Patterns.PHONE.matcher(phone).matches();
     }
+  public static boolean validateUsing_libphonenumber(String countryCode, String phNumber) {
+        PhoneNumberUtil phoneNumberUtil = PhoneNumberUtil.getInstance();
+        String isoCode = phoneNumberUtil.getRegionCodeForCountryCode(Integer.parseInt(countryCode));
+        Phonenumber.PhoneNumber phoneNumber = null;
+        try {
+            //phoneNumber = phoneNumberUtil.parse(phNumber, "IN");  //if you want to pass region code
+            phoneNumber = phoneNumberUtil.parse(phNumber, isoCode);
+        } catch (NumberParseException e) {
+        }
 
+        boolean isValid = phoneNumberUtil.isValidNumber(phoneNumber);
+        if (isValid) {
+            return true;
+        } else {
+
+            return false;
+        }
+    }
 }

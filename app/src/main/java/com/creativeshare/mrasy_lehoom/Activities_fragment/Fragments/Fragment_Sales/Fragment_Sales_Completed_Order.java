@@ -63,6 +63,9 @@ public class Fragment_Sales_Completed_Order extends Fragment {
         Orders_Recycle_View = view.findViewById(R.id.salesorders_completd);
         progBar =  view.findViewById(R.id.progBar_sales_Completd);
         progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+        Orders_Recycle_View.setItemViewCacheSize(25);
+        Orders_Recycle_View.setDrawingCacheEnabled(true);
+        Orders_Recycle_View.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         get_orders( user_model);
 
     }

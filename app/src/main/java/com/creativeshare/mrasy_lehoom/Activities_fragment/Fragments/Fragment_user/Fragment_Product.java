@@ -104,7 +104,9 @@ public class Fragment_Product extends Fragment {
         progressBar = (ProgressBar) view.findViewById(R.id.progBar3);
         products = (RecyclerView) view.findViewById(R.id.types);
         progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
-
+        products.setItemViewCacheSize(25);
+        products.setDrawingCacheEnabled(true);
+        products.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         img2 = (ImageView) view.findViewById(R.id.img_pro);
         name=getArguments().getString(Tag3);
         product_txt.setText(name);

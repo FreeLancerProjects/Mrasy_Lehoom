@@ -4,6 +4,7 @@ package com.creativeshare.mrasy_lehoom.Adapters;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,8 @@ public class Product_Adapter extends RecyclerView.Adapter<Product_Adapter.Eyas_H
     public void onBindViewHolder(final Eyas_Holder viewHolder, int i) {
         Product_Model.InnerData model=list.get(i);
         viewHolder.name.setText(model.getName());
+        Log.e("im",model.getImage());
+
         Picasso.with(context).load(Uri.parse(Tags.base_IMage_url+model.getImage())).fit().into(viewHolder.frameLayout);
     viewHolder.price.setText(model.getPrice()+"");
 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

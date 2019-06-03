@@ -2,6 +2,7 @@ package com.creativeshare.mrasy_lehoom.Adapters;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +69,8 @@ public class Orders_Adpter extends RecyclerView.Adapter<Orders_Adpter.Eyas_Holde
         }
 
         viewHolder.time.setText(time[1] + timemode);
+        Log.e("im",model.getproduct().getImage());
+
         Picasso.with(context).load(Uri.parse(Tags.base_IMage_url+model.getproduct().getImage())).fit().into(viewHolder.frameLayout);
 
         //viewHolder.frameLayout.setImageResource(model.image);

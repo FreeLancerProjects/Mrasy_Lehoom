@@ -67,9 +67,13 @@ public class Fragment_Cart extends Fragment {
         linearLayout = view.findViewById(R.id.lin_cart);
         error = view.findViewById(R.id.error_cart);
         cart = view.findViewById(R.id.cart_data);
+
         continue_order = view.findViewById(R.id.Continue_order);
         back = view.findViewById(R.id.back_cart);
         order = preferences.getUserOrder(activity);
+       cart.setItemViewCacheSize(25);
+       cart.setDrawingCacheEnabled(true);
+       cart.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         if (order != null) {
 
             cart_adpter = new Cart_Adpter(order, activity);

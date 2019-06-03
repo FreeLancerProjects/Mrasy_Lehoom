@@ -68,6 +68,9 @@ public class Fragment_Offers extends Fragment {
         progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
 
         offers_Rececyle_View = (RecyclerView) view.findViewById(R.id.offfr);
+        offers_Rececyle_View.setItemViewCacheSize(25);
+        offers_Rececyle_View.setDrawingCacheEnabled(true);
+        offers_Rececyle_View.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         get_offrs();
     }
 

@@ -4,6 +4,7 @@ package com.creativeshare.mrasy_lehoom.Adapters;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,9 @@ this.context=context;
     public void onBindViewHolder(@NonNull final Eyas_Holder viewHolder, int i) {
 Catogry_Model_Slide.InnerData  model=list.get(i);
        viewHolder.txt2.setText(model.getName());
-       Picasso.with(context).load(Uri.parse(Tags.base_IMage_url+model.getImage())).fit().into(viewHolder.im);
+        Log.e("im",model.getImage());
+
+        Picasso.with(context).load(Uri.parse(Tags.base_IMage_url+model.getImage())).fit().into(viewHolder.im);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

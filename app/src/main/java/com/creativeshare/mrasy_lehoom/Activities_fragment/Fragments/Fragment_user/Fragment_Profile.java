@@ -90,7 +90,7 @@ public class Fragment_Profile extends Fragment {
             }
         }
 
-        else if(Common.isValidMobile(user_phone)==false){
+        else if(Common.validateUsing_libphonenumber("00966",user_phone)==false){
             Common.CreateSignAlertDialog(activity,activity.getString(R.string.invaild_phone));
         }
         else {

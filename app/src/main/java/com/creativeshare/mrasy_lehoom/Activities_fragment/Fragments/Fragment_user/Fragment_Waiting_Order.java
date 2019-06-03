@@ -63,6 +63,9 @@ public class Fragment_Waiting_Order extends Fragment {
         Orders_Recycle_View = view.findViewById(R.id.wait_order);
         progBar =  view.findViewById(R.id.progBar_wait);
         progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+        Orders_Recycle_View.setItemViewCacheSize(25);
+        Orders_Recycle_View.setDrawingCacheEnabled(true);
+        Orders_Recycle_View.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         get_orders( user_model);
 
     }

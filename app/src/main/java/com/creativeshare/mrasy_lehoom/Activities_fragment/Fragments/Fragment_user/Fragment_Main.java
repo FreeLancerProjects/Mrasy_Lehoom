@@ -101,8 +101,9 @@ public class Fragment_Main extends Fragment {
 
         progBarAds = view.findViewById(R.id.progBarAds);
         progBarAds.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
-
-
+        recc.setItemViewCacheSize(25);
+        recc.setDrawingCacheEnabled(true);
+        recc.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
     }
 
