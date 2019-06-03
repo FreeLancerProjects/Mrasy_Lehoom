@@ -2,6 +2,7 @@ package com.creativeshare.mrasy_lehoom.Activities_fragment.Fragments.Fragment_us
 
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -25,6 +26,7 @@ import com.creativeshare.mrasy_lehoom.Model.Model_Offr_Product;
 import com.creativeshare.mrasy_lehoom.Model.Orders_Cart_Model;
 import com.creativeshare.mrasy_lehoom.Model.Product_Model;
 import com.creativeshare.mrasy_lehoom.Share.Common;
+import com.creativeshare.mrasy_lehoom.Tags.Tags;
 import com.creativeshare.mrasy_lehoom.preferences.Preferences;
 import com.creativeshare.mrasy_lehoom.Activities_fragment.Activites.Home_Activity;
 import com.creativeshare.mrasy_lehoom.R;
@@ -158,12 +160,12 @@ public class Fragment_Product_Details extends Fragment {
         kersh.check(R.id.No);
         covering.check(R.id.without);
         if (param == 1) {
-            Picasso.with(activity).load(prods.getImage()).fit().into(product_iamge);
+            Picasso.with(activity).load(Uri.parse(Tags.base_IMage_url+prods.getImage())).fit().into(product_iamge);
             size.setText((prods.getDescription().replaceAll("الحجم","").replaceAll("من","")));
             total.setText((prods.getPrice() + cutt + cover) + "");
 
         } else {
-            Picasso.with(activity).load(data.getImage()).fit().into(product_iamge);
+            Picasso.with(activity).load(Uri.parse(Tags.base_IMage_url+data.getImage())).fit().into(product_iamge);
             size.setText((data.getDescription().replaceAll("الحجم","").replaceAll("من","")));
             total.setText((data.getPrice() + cutt + cover) + "");
 

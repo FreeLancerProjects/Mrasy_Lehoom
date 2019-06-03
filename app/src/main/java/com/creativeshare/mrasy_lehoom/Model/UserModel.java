@@ -18,6 +18,11 @@ public class UserModel implements Serializable {
         private String email_verified_at;
         private String created_at;
         private String updated_at;
+
+        public void setRole(String role) {
+            this.role = role;
+        }
+
         private String role;
 
         public String getRole() {

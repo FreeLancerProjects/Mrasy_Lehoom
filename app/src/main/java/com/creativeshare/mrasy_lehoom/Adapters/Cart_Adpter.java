@@ -1,6 +1,7 @@
 package com.creativeshare.mrasy_lehoom.Adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.creativeshare.mrasy_lehoom.Model.Orders_Cart_Model;
 import com.creativeshare.mrasy_lehoom.R;
+import com.creativeshare.mrasy_lehoom.Tags.Tags;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -41,7 +43,7 @@ public class Cart_Adpter extends RecyclerView.Adapter<Cart_Adpter.Eyas_Holder> {
 
 
         viewHolder.total.setText(model.getQuantity() + "");
-        Picasso.with(context).load(model.getImage()).fit().into(viewHolder.frameLayout);
+        Picasso.with(context).load(Uri.parse(Tags.base_IMage_url+model.getImage())).fit().into(viewHolder.frameLayout);
 
 
     }

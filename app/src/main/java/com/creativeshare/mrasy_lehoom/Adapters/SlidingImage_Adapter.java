@@ -2,6 +2,7 @@ package com.creativeshare.mrasy_lehoom.Adapters;
 
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.creativeshare.mrasy_lehoom.R;
+import com.creativeshare.mrasy_lehoom.Tags.Tags;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
@@ -50,7 +52,7 @@ public class SlidingImage_Adapter extends PagerAdapter {
         final RoundedImageView imageView =  imageLayout
                 .findViewById(R.id.image);
 
-        Picasso.with(context).load(IMAGES.get(position)).fit().into(imageView);
+        Picasso.with(context).load(Uri.parse(Tags.base_IMage_url+IMAGES.get(position))).fit().into(imageView);
         view.addView(imageLayout, 0);
 
         return imageLayout;

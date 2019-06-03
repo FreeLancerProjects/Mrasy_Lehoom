@@ -4,6 +4,7 @@ package com.creativeshare.mrasy_lehoom.Adapters;
 
 import android.content.Context;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.creativeshare.mrasy_lehoom.Activities_fragment.Activites.Home_Activity;
 import com.creativeshare.mrasy_lehoom.Model.Offers_Model;
 import com.creativeshare.mrasy_lehoom.R;
+import com.creativeshare.mrasy_lehoom.Tags.Tags;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
@@ -39,7 +41,7 @@ Context context;
     public void onBindViewHolder(@NonNull final Eyas_Holder viewHolder, int i) {
         Offers_Model.InnerData model=list.get(i);
         viewHolder.txt2.setText(model.getName());
-        Picasso.with(context).load(model.getImage()).fit().into(viewHolder.frameLayout);
+        Picasso.with(context).load(Uri.parse(Tags.base_IMage_url+model.getImage())).fit().into(viewHolder.frameLayout);
 
         //viewHolder.frameLayout.setImageResource(model.image);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

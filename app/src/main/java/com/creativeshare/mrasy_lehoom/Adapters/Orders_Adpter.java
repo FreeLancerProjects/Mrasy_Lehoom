@@ -1,6 +1,7 @@
 package com.creativeshare.mrasy_lehoom.Adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.creativeshare.mrasy_lehoom.Tags.Tags;
 import com.creativeshare.mrasy_lehoom.preferences.Preferences;
 import com.creativeshare.mrasy_lehoom.Activities_fragment.Activites.Home_Activity;
 import com.creativeshare.mrasy_lehoom.Model.Orders_Model;
@@ -66,7 +68,7 @@ public class Orders_Adpter extends RecyclerView.Adapter<Orders_Adpter.Eyas_Holde
         }
 
         viewHolder.time.setText(time[1] + timemode);
-        Picasso.with(context).load(model.getproduct().getImage()).fit().into(viewHolder.frameLayout);
+        Picasso.with(context).load(Uri.parse(Tags.base_IMage_url+model.getproduct().getImage())).fit().into(viewHolder.frameLayout);
 
         //viewHolder.frameLayout.setImageResource(model.image);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

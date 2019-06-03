@@ -3,6 +3,7 @@ package com.creativeshare.mrasy_lehoom.Adapters;
 
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.creativeshare.mrasy_lehoom.Activities_fragment.Activites.Home_Activity;
 import com.creativeshare.mrasy_lehoom.Model.Product_Model;
 import com.creativeshare.mrasy_lehoom.R;
+import com.creativeshare.mrasy_lehoom.Tags.Tags;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
@@ -41,7 +43,7 @@ public class Product_Adapter extends RecyclerView.Adapter<Product_Adapter.Eyas_H
     public void onBindViewHolder(final Eyas_Holder viewHolder, int i) {
         Product_Model.InnerData model=list.get(i);
         viewHolder.name.setText(model.getName());
-        Picasso.with(context).load(model.getImage()).fit().into(viewHolder.frameLayout);
+        Picasso.with(context).load(Uri.parse(Tags.base_IMage_url+model.getImage())).fit().into(viewHolder.frameLayout);
     viewHolder.price.setText(model.getPrice()+"");
 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
     @Override

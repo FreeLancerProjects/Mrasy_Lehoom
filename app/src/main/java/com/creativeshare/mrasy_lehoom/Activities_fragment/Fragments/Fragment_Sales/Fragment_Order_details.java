@@ -1,5 +1,6 @@
 package com.creativeshare.mrasy_lehoom.Activities_fragment.Fragments.Fragment_Sales;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.creativeshare.mrasy_lehoom.Model.Orders_Model;
 import com.creativeshare.mrasy_lehoom.Activities_fragment.Activites.Home_Activity;
 import com.creativeshare.mrasy_lehoom.R;
+import com.creativeshare.mrasy_lehoom.Tags.Tags;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -64,7 +66,7 @@ public class Fragment_Order_details extends Fragment {
         cover();
         details.setText(orInnerData.getDescription());
         total.setText(orInnerData.getOrder_total());
-        Picasso.with(activity).load(orInnerData.getproduct().getImage()).fit().into(circleImageView);
+        Picasso.with(activity).load(Uri.parse(Tags.base_IMage_url+orInnerData.getproduct().getImage())).fit().into(circleImageView);
         if (orInnerData.getKersh_and_mosran().equals("0")) {
             kersh_mosran.setText(getString(R.string.without)+" " + getString(R.string.kersh_and_mosran));
         } else {

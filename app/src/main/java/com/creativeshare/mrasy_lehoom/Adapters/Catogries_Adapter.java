@@ -3,6 +3,7 @@ package com.creativeshare.mrasy_lehoom.Adapters;
 
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.creativeshare.mrasy_lehoom.Activities_fragment.Activites.Home_Activity;
 import com.creativeshare.mrasy_lehoom.Model.Catogry_Model_Slide;
 import com.creativeshare.mrasy_lehoom.R;
+import com.creativeshare.mrasy_lehoom.Tags.Tags;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -40,7 +42,7 @@ this.context=context;
     public void onBindViewHolder(@NonNull final Eyas_Holder viewHolder, int i) {
 Catogry_Model_Slide.InnerData  model=list.get(i);
        viewHolder.txt2.setText(model.getName());
-       Picasso.with(context).load(model.getImage()).fit().into(viewHolder.im);
+       Picasso.with(context).load(Uri.parse(Tags.base_IMage_url+model.getImage())).fit().into(viewHolder.im);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,8 +63,8 @@ CircleImageView im;
 
         public Eyas_Holder(@NonNull View itemView) {
             super(itemView);
-            txt2=(TextView)itemView.findViewById(R.id.txt2);
-            im=(CircleImageView) itemView.findViewById(R.id.img);
+            txt2=itemView.findViewById(R.id.txt2);
+            im= itemView.findViewById(R.id.img);
 
         }
 

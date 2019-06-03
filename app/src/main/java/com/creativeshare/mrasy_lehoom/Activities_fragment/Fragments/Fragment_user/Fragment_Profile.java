@@ -101,6 +101,7 @@ public class Fragment_Profile extends Fragment {
                 public void onResponse(Call<UserModel> call, Response<UserModel> response) {
                     if (response.isSuccessful()) {
                         Common.CreateSignAlertDialog(activity, activity.getString(R.string.update_success));
+                        response.body().getData().setRole("user");
                         Preferences.getInstance().create_update_userdata(activity, response.body());
                         pass.setText("");
                     } else {
