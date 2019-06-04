@@ -24,6 +24,7 @@ import com.creativeshare.mrasy_lehoom.Activities_fragment.Activites.Home_Activit
 import com.creativeshare.mrasy_lehoom.R;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,7 +33,7 @@ import retrofit2.Response;
 
 
 /**
-\
+ * \
  */
 public class Fragment_Completed_Order extends Fragment {
     private Preferences preferences;
@@ -50,46 +51,47 @@ public class Fragment_Completed_Order extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view= inflater.inflate(R.layout.fragment_completed__order, container, false);
-       intitview(view);
-       return view;
+        View view = inflater.inflate(R.layout.fragment_completed__order, container, false);
+        intitview(view);
+        return view;
     }
 
     private void intitview(View view) {
+        Orders=new ArrayList<>();
         preferences = Preferences.getInstance();
         activity = (Home_Activity) getActivity();
         user_model = preferences.getUserData(activity);
         error = view.findViewById(R.id.error_complete_orders);
         Orders_Recycle_View = view.findViewById(R.id.completed_order);
-        progBar =  view.findViewById(R.id.progBar_complete);
+        progBar = view.findViewById(R.id.progBar_complete);
         progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
         Orders_Recycle_View.setItemViewCacheSize(25);
         Orders_Recycle_View.setDrawingCacheEnabled(true);
         Orders_Recycle_View.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-        get_orders( user_model);
+        order_adapter = new Orders_Adpter(Orders, activity, getResources().getString(R.string.Currency));
+        Orders_Recycle_View.setLayoutManager(new GridLayoutManager(activity, 1));
+        Orders_Recycle_View.setAdapter(order_adapter);
+        get_orders(user_model);
 
     }
 
 
-    public void get_orders( UserModel user_model) {
-        Api.getService().get_orders(user_model.getData().getId(),2).enqueue(new Callback<Orders_Model>() {
+    public void get_orders(UserModel user_model) {
+        Api.getService().get_orders(user_model.getData().getId(), 2).enqueue(new Callback<Orders_Model>() {
             @Override
             public void onResponse(Call<Orders_Model> call, Response<Orders_Model> response) {
                 progBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
 
-                    Orders = response.body().getData();
 
-                    if (!Orders.isEmpty() && Orders.size() > 0) {
-                        order_adapter = new Orders_Adpter(Orders, activity, getResources().getString(R.string.Currency));
+                    if (response.body().getData()!=null&&response.body().getData().size() > 0) {
+                        Orders.addAll(response.body().getData());
+                        order_adapter.notifyDataSetChanged();
 
-                        Orders_Recycle_View.setLayoutManager(new GridLayoutManager(activity, 1));
-                        Orders_Recycle_View.setAdapter(order_adapter);
                     } else {
                         error.setText(activity.getString(R.string.no_data));
                         Orders_Recycle_View.setVisibility(View.GONE);
@@ -98,8 +100,7 @@ public class Fragment_Completed_Order extends Fragment {
                 } else if (response.code() == 404) {
                     error.setText(activity.getString(R.string.no_data));
                     Orders_Recycle_View.setVisibility(View.GONE);
-                }
-                else {
+                } else {
                     try {
                         Log.e("Error_code", response.code() + "_" + response.errorBody().string());
                     } catch (IOException e) {

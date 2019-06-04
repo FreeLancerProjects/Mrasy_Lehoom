@@ -24,6 +24,7 @@ import com.creativeshare.mrasy_lehoom.Activities_fragment.Activites.Home_Activit
 import com.creativeshare.mrasy_lehoom.R;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -55,6 +56,7 @@ public class Fragment_ِBinding_Order extends Fragment {
        return view;
     }
     private void intitview(View view) {
+        Orders=new ArrayList<>();
         preferences = Preferences.getInstance();
         activity = (Home_Activity) getActivity();
         user_model = preferences.getUserData(activity);
@@ -65,6 +67,10 @@ public class Fragment_ِBinding_Order extends Fragment {
         Orders_Recycle_View.setItemViewCacheSize(25);
         Orders_Recycle_View.setDrawingCacheEnabled(true);
         Orders_Recycle_View.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        order_adapter = new Orders_Adpter(Orders, activity, getResources().getString(R.string.Currency));
+
+        Orders_Recycle_View.setLayoutManager(new GridLayoutManager(activity, 1));
+        Orders_Recycle_View.setAdapter(order_adapter);
         get_orders( user_model);
 
     }
@@ -77,13 +83,11 @@ public class Fragment_ِBinding_Order extends Fragment {
                 progBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
 
-                    Orders = response.body().getData();
 
-                    if (!Orders.isEmpty() && Orders.size() > 0) {
-                        order_adapter = new Orders_Adpter(Orders, activity, getResources().getString(R.string.Currency));
+                    if (response.body().getData()!=null&&response.body().getData().size() > 0) {
+                        Orders.addAll(response.body().getData());
+                        order_adapter.notifyDataSetChanged();
 
-                        Orders_Recycle_View.setLayoutManager(new GridLayoutManager(activity, 1));
-                        Orders_Recycle_View.setAdapter(order_adapter);
                     } else {
                         error.setText(activity.getString(R.string.no_data));
                         Orders_Recycle_View.setVisibility(View.GONE);

@@ -78,10 +78,20 @@ public class Fragment_Product extends Fragment {
 
         if (param == 2) {
             // product_txt.setText();
+            list=new ArrayList<>();
+            products.setVisibility(View.VISIBLE);
+            product_adapter = new Product_Adapter(list, activity);
+            products.setLayoutManager(new GridLayoutManager(activity, 1));
+            products.setAdapter(product_adapter);
             getproductbycatogry(Product_id);
 
 
         } else if (param == 1) {
+            list2=new ArrayList<>();
+            products.setVisibility(View.VISIBLE);
+            product_offers_adapter = new Product_Offers_Adapter(list2, activity);
+            products.setLayoutManager(new GridLayoutManager(activity, 1));
+            products.setAdapter(product_offers_adapter);
             getproduct_offer(Product_id);
         }
         img2.setOnClickListener(new View.OnClickListener() {
@@ -123,13 +133,9 @@ public class Fragment_Product extends Fragment {
                 progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
 
-                    list2 = response.body().getInnerData().getData();
-                    if (!list2.isEmpty() && list2.size() > 0) {
-                        products.setVisibility(View.VISIBLE);
-                        product_offers_adapter = new Product_Offers_Adapter(list2, activity);
-                        products.setLayoutManager(new GridLayoutManager(activity, 1));
-                        products.setAdapter(product_offers_adapter);
-
+                    if (response.body().getInnerData().getData()!=null&&response.body().getInnerData().getData().size() > 0) {
+                        list2.addAll(response.body().getInnerData().getData());
+                        product_offers_adapter.notifyDataSetChanged();
 
                     } else {
                         error.setText("No data Found");
@@ -158,13 +164,10 @@ public class Fragment_Product extends Fragment {
                 progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
 
-                    list = response.body().getData();
 
-                    if (!list.isEmpty() && list.size() > 0) {
-                        products.setVisibility(View.VISIBLE);
-                        product_adapter = new Product_Adapter(list, activity);
-                        products.setLayoutManager(new GridLayoutManager(activity, 1));
-                        products.setAdapter(product_adapter);
+                    if (response.body().getData()!=null&&response.body().getData().size() > 0) {
+                        list.addAll(response.body().getData());
+                        product_adapter.notifyDataSetChanged();
 
                     } else {
                         error.setText(activity.getString(R.string.no_data));

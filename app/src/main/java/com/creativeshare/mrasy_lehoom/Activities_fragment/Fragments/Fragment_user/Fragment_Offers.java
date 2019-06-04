@@ -24,6 +24,7 @@ import com.creativeshare.mrasy_lehoom.Activities_fragment.Activites.Home_Activit
 import com.creativeshare.mrasy_lehoom.R;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -63,6 +64,7 @@ public class Fragment_Offers extends Fragment {
     }
 
     private void intitview(View view) {
+        list=new ArrayList<>();
         error = view.findViewById(R.id.error_offers);
         progressBar = (ProgressBar) view.findViewById(R.id.progBar2);
         progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
@@ -71,6 +73,11 @@ public class Fragment_Offers extends Fragment {
         offers_Rececyle_View.setItemViewCacheSize(25);
         offers_Rececyle_View.setDrawingCacheEnabled(true);
         offers_Rececyle_View.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        offers_Rececyle_View.setVisibility(View.VISIBLE);
+        offers_Adapter_ = new Offers_Adapter(list, activity);
+
+        offers_Rececyle_View.setLayoutManager(new GridLayoutManager(activity, 1));
+        offers_Rececyle_View.setAdapter(offers_Adapter_);
         get_offrs();
     }
 
@@ -84,15 +91,11 @@ public class Fragment_Offers extends Fragment {
                 if (response.isSuccessful()) {
 
 
-                        list = response.body().getData();
-                        if (!list.isEmpty() && list.size() > 0) {
+                    if (response.body().getData()!=null&&response.body().getData().size() > 0) {
+                        list.addAll(response.body().getData());
+                        offers_Adapter_.notifyDataSetChanged();
 
-                            offers_Rececyle_View.setVisibility(View.VISIBLE);
-                            offers_Adapter_ = new Offers_Adapter(list, activity);
-
-                            offers_Rececyle_View.setLayoutManager(new GridLayoutManager(activity, 1));
-                            offers_Rececyle_View.setAdapter(offers_Adapter_);
-                        }
+                    }
                  else {
                             error.setText(activity.getString(R.string.no_data));
                             offers_Rececyle_View.setVisibility(View.GONE);

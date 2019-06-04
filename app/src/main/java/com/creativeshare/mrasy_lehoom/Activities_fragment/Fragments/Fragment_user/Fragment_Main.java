@@ -29,6 +29,7 @@ import com.creativeshare.mrasy_lehoom.R;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -90,6 +91,7 @@ public class Fragment_Main extends Fragment {
 
 
     private void initView(View view) {
+        list=new ArrayList<>();
         activity = (Home_Activity) getActivity();
         error = view.findViewById(R.id.error);
         recc = view.findViewById(R.id.rec);
@@ -104,6 +106,9 @@ public class Fragment_Main extends Fragment {
         recc.setItemViewCacheSize(25);
         recc.setDrawingCacheEnabled(true);
         recc.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        eas = new Catogries_Adapter(list, activity);
+        recc.setAdapter(eas);
+        recc.setNestedScrollingEnabled(true);
 
     }
 
@@ -161,12 +166,10 @@ public class Fragment_Main extends Fragment {
                 progBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
 
-                    list = response.body().getData();
-                    if (!list.isEmpty() && list.size() > 0) {
-                        current_page++;
-                        eas = new Catogries_Adapter(list, activity);
-                        recc.setAdapter(eas);
-                        recc.setNestedScrollingEnabled(true);
+                    if (response.body().getData()!=null&&response.body().getData().size() > 0) {
+                        list.addAll(response.body().getData());
+                        eas.notifyDataSetChanged();
+
                     } else {
                         error.setText(activity.getString(R.string.no_data));
                         recc.setVisibility(View.GONE);

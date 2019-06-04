@@ -39,15 +39,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/gray_transparent"
-        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/too2">
+        app:layout_constraintTop_toBottomOf="@+id/too2"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/contaact_us_txt1"
@@ -72,6 +75,7 @@
                 android:background="@drawable/edit_text_shap"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:singleLine="true"
                 app:layout_constraintTop_toBottomOf="@+id/contaact_us_txt1" />
 
             <TextView
@@ -97,6 +101,7 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/edit_text_shap"
                 android:inputType="textEmailAddress"
+                android:singleLine="true"
                 app:layout_constraintTop_toBottomOf="@+id/contact_us_txt2" />
 
             <TextView
