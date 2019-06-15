@@ -27,6 +27,6 @@
         android:gravity="center"
         android:text="@string/Condition"
         android:textColor="#ffffffff"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 </FrameLayout>
