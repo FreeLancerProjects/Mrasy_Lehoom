@@ -45,7 +45,6 @@
     <string name="excuse_this_phone_register_before">Exxcuse This Phone register before</string>
     <string name="faild">faild</string>
     <string name="fridge">fridge</string>
-    <string name="gcm_fallback_notification_channel_label">Miscellaneous</string>
     <string name="half">half</string>
     <string name="home">Home</string>
     <string name="invaild_email">Invaild Email</string>
@@ -90,7 +89,7 @@
     <string name="slide1_desc3">Select the specifications of the item you want to buy and press Add to Ca</string>
     <string name="slide1_desc4">Go to the shopping cart to complete the purchase</string>
     <string name="slide1_desc5">Make a payment through one of the payment methods in the application and wait for delivery</string>
-    <string name="stand">stand</string>
+    <string name="stand">Flattened</string>
     <string name="stat_app">Start</string>
     <string name="sucess">Sucess</string>
     <string name="total">Total</string>
@@ -103,4 +102,7 @@
     <string name="waiting">Waiting</string>
     <string name="without">Without</string>
     <string name="yes">yes</string>
+    <string name="complete">Complete</string>
+    <string name="hadrmi1">Good, Hadrami 32 pieces</string>
+    <string name="hadrmi2">Good, Hadrami 8 pieces</string>
 </resources>

@@ -107,24 +107,22 @@
                         android:textSize="10sp" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/lin_buy2"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@+id/lin_buy1">
+
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/lin_buy2"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
                         android:layout_weight="1.0"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        app:layout_constraintTop_toBottomOf="@+id/lin_buy1"
+                        >
 
                         <TextView
                             style="@style/textstyle"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="5dp"
                             android:text="@string/size"
@@ -132,34 +130,38 @@
 
                         <TextView
                             android:id="@+id/size"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:textColor="@color/black" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:orientation="vertical">
 
-                        <TextView
-                            style="@style/textstyle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp"
-                            android:text="@string/cutting"
-                            android:textSize="15sp" />
+                <LinearLayout
+                    android:id="@+id/lin_buy3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-                        <Spinner
-                            android:id="@+id/cutting"
-                            style="@style/spinner_style"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
-                    </LinearLayout>
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/lin_buy2"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    >
+
+                    <TextView
+                        style="@style/textstyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/cutting"
+                        android:textSize="15sp" />
+
+                    <Spinner
+                        android:id="@+id/cutting"
+                        style="@style/spinner_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <TextView
@@ -172,7 +174,7 @@
                     android:padding="10dp"
                     android:text="@string/covering"
                     android:textSize="15sp"
-                    app:layout_constraintTop_toBottomOf="@+id/lin_buy2" />
+                    app:layout_constraintTop_toBottomOf="@+id/lin_buy3" />
 
                 <RadioGroup
                     android:id="@+id/packing_buy"
@@ -250,7 +252,7 @@
                 </RadioGroup>
 
                 <LinearLayout
-                    android:id="@+id/lin_buy3"
+                    android:id="@+id/lin_buy4"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginTop="8dp"
@@ -276,13 +278,13 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/lin_buy4"
+                    android:id="@+id/lin_buy5"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@+id/lin_buy3">
+                    app:layout_constraintTop_toBottomOf="@+id/lin_buy4">
 
                     <TextView
                         style="@style/textstyle"
@@ -315,7 +317,7 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lin_buy4" />
+                    app:layout_constraintTop_toBottomOf="@+id/lin_buy5" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <de.hdodenhof.circleimageview.CircleImageView

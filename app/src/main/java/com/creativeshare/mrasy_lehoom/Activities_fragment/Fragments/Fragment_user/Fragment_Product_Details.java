@@ -116,8 +116,9 @@ public class Fragment_Product_Details extends Fragment {
         total = (TextView) view.findViewById(R.id.total);
         param = getArguments().getInt(Tag);
         Orders_Cart_Model = new Orders_Cart_Model();
-        if(preferences.getUserData(activity)!=null){
-        Orders_Cart_Model.setUser_id(preferences.getUserData(activity).getData().getId());}
+        if (preferences.getUserData(activity) != null) {
+            Orders_Cart_Model.setUser_id(preferences.getUserData(activity).getData().getId());
+        }
         if (preferences.getlang(activity).equals("en")) {
             back.setRotation(180);
         }
@@ -141,11 +142,11 @@ public class Fragment_Product_Details extends Fragment {
         }
         Drawable spinnerDrawable = cutting.getBackground().getConstantState().newDrawable();
 
-        spinnerDrawable.setColorFilter(getResources().getColor(R.color.colorPrimary),PorterDuff.Mode.SRC_ATOP);
+        spinnerDrawable.setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             cutting.setBackground(spinnerDrawable);
-        }else{
+        } else {
             cutting.setBackgroundDrawable(spinnerDrawable);
         }
 
@@ -156,17 +157,22 @@ public class Fragment_Product_Details extends Fragment {
         list1.add(getResources().getString(R.string.half));
         list1.add(getResources().getString(R.string.alife));
         list1.add(getResources().getString(R.string.stand));
+        list1.add(getResources().getString(R.string.complete));
+        list1.add(getResources().getString(R.string.hadrmi1));
+        list1.add(getResources().getString(R.string.hadrmi2));
+
+
         cutting.setAdapter(adp3);
         kersh.check(R.id.No);
         covering.check(R.id.without);
         if (param == 1) {
-            Picasso.with(activity).load(Uri.parse(Tags.base_IMage_url+prods.getImage())).fit().into(product_iamge);
-            size.setText((prods.getDescription().replaceAll("الحجم","").replaceAll("من","")));
+            Picasso.with(activity).load(Uri.parse(Tags.base_IMage_url + prods.getImage())).fit().into(product_iamge);
+            size.setText((prods.getDescription().replaceAll("الحجم", "").replaceAll("من", "")));
             total.setText((prods.getPrice() + cutt + cover) + "");
 
         } else {
-            Picasso.with(activity).load(Uri.parse(Tags.base_IMage_url+data.getImage())).fit().into(product_iamge);
-            size.setText((data.getDescription().replaceAll("الحجم","").replaceAll("من","")));
+            Picasso.with(activity).load(Uri.parse(Tags.base_IMage_url + data.getImage())).fit().into(product_iamge);
+            size.setText((data.getDescription().replaceAll("الحجم", "").replaceAll("من", "")));
             total.setText((data.getPrice() + cutt + cover) + "");
 
         }
@@ -184,7 +190,7 @@ public class Fragment_Product_Details extends Fragment {
                     } else {
                         price = (double) (Double.parseDouble(total.getText().toString())) + data.getPrice();
                     }
-                    total.setText(price +"");
+                    total.setText(price + "");
                 }
             }
         });
@@ -247,7 +253,7 @@ public class Fragment_Product_Details extends Fragment {
                         cutt = Double.parseDouble(data.getAlife_price());
                     }
 
-                } else if (position == 4) {
+                } else  {
                     if (param == 1) {
                         total1 += Double.parseDouble(prods.getStand_price());
                         cutt = Double.parseDouble(prods.getStand_price());
@@ -287,9 +293,8 @@ public class Fragment_Product_Details extends Fragment {
                         cover = Double.parseDouble(data.getPlastic_price());
 
                     }
-                }
-                else {
-                    cover=0;
+                } else {
+                    cover = 0;
                 }
 
                 total.setText(total1 + "");
@@ -335,7 +340,7 @@ public class Fragment_Product_Details extends Fragment {
 
                 }
                 Orders_Cart_Model.setQuantity(Integer.parseInt(quantity.getText().toString()));
-                Orders_Cart_Model.setCutting(cutting.getSelectedItemPosition()+"");
+                Orders_Cart_Model.setCutting(cutting.getSelectedItemPosition() + "");
                 Orders_Cart_Model.setCovering(cover_ing);
                 Orders_Cart_Model.setDescription(details.getText().toString());
                 Orders_Cart_Model.setOrder_total(total.getText().toString());
@@ -346,7 +351,8 @@ public class Fragment_Product_Details extends Fragment {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-activity.Back();            }
+                activity.Back();
+            }
         });
     }
 }

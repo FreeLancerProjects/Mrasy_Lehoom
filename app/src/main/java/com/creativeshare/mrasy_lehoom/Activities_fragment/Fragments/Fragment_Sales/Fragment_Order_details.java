@@ -95,6 +95,17 @@ public class Fragment_Order_details extends Fragment {
         } else if (orInnerData.getCutting().equals("4")) {
             cut = getString(R.string.stand);
         }
+        else if(orInnerData.getCutting().equals("5")){
+            cut = getString(R.string.complete);
+        }
+        else if(orInnerData.getCutting().equals("6")){
+            cut = getString(R.string.hadrmi1);
+
+
+        } else if(orInnerData.getCutting().equals("7")){
+            cut = getString(R.string.hadrmi2);
+
+        }
         cutting.setText(cut + "");
     }
 
