@@ -12,9 +12,6 @@
     <string name="Sign_up">Sign Up</string>
     <string name="Something_Error">Something Error</string>
     <string name="User_Details">User_Details</string>
-
-
-
     <string name="accountِ">Account</string>
     <string name="add_details">Add Details</string>
     <string name="address">Address</string>
@@ -32,7 +29,6 @@
     <string name="cart_orders">Cart_Orders</string>
     <string name="choose">choose</string>
     <string name="client_detials">Client_detials</string>
-
     <string name="complete_buy">Complete Buy</string>
     <string name="complete_order">Complete order</string>
     <string name="completed">Completed</string>
@@ -53,7 +49,6 @@
     <string name="language1">Arbaic</string>
     <string name="language2">English</string>
     <string name="language_setting">Language setting</string>
-
     <string name="login">Login</string>
     <string name="map_api_key">AIzaSyCbc2Y5AIwZ8uUeHRUXiozGN3CnpjKT0oI</string>
     <string name="more">more</string>
@@ -67,7 +62,6 @@
     <string name="order_completed">Order Completed</string>
     <string name="order_details">order_Details</string>
     <string name="ordres">My Order</string>
-
     <string name="phone_number">Phone_Number</string>
     <string name="place_autocomplete_clear_button">Clear search</string>
     <string name="place_autocomplete_search_hint">Search</string>
@@ -91,7 +85,7 @@
     <string name="slide1_desc5">Make a payment through one of the payment methods in the application and wait for delivery</string>
     <string name="stand">Flattened</string>
     <string name="stat_app">Start</string>
-    <string name="sucess">Sucess</string>
+    <string name="sucess">Success</string>
     <string name="total">Total</string>
     <string name="update_success">update success</string>
     <string name="user_Full_name">Full Name</string>

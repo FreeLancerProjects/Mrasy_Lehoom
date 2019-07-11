@@ -12,7 +12,6 @@
     <string name="Sign_up">تسجيل</string>
     <string name="Something_Error">شئ ما خطأ</string>
     <string name="User_Details">بيانات المستخدم</string>
-
     <string name="accountِ">حسابى</string>
     <string name="add_details">اضف التفاصيل</string>
     <string name="address">العنوان</string>
@@ -30,7 +29,6 @@
     <string name="cart_orders">محتويات السله</string>
     <string name="choose">اختر</string>
     <string name="client_detials">بيانات العميل</string>
-
     <string name="complete_buy">إتمام عملية الشراء</string>
     <string name="complete_order">إتمام عملية الشراء</string>
     <string name="completed">مكتمل</string>
