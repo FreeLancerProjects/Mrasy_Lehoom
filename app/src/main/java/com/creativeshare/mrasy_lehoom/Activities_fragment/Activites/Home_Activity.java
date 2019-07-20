@@ -484,6 +484,8 @@ public class Home_Activity extends AppCompatActivity  implements LocationListene
 
             if (fragment_orders.isAdded()) {
                 fragmentManager.beginTransaction().show(fragment_orders).commit();
+                fragment_orders.setpage(0);
+
             } else {
                 fragmentManager.beginTransaction().add(R.id.fragment_main_child, fragment_orders, "fragment_orders").addToBackStack("fragment_orders").commit();
 

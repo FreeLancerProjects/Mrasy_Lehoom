@@ -90,4 +90,8 @@ public class Fragment_Orders extends Fragment {
 */
     }
 
+    public void setpage(int i) {
+        viewPager.setCurrentItem(i);
+
+    }
 }

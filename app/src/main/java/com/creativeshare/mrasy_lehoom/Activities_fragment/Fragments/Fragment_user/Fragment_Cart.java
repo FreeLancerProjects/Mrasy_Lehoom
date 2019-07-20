@@ -124,6 +124,8 @@ public class Fragment_Cart extends Fragment {
                     cart_adpter.notifyDataSetChanged();
                     preferences.create_update_order(activity, null);
                     Common.CreateSignAlertDialog(activity, getResources().getString(R.string.sucess));
+                    activity.Back();
+                    activity.DisplayFragmentOrders();
                 } else {
 
                     Log.e("Error code", response.code() + "" + response.errorBody());

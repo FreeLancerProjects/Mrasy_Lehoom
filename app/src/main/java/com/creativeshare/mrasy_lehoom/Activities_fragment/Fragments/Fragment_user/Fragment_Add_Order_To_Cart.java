@@ -171,7 +171,7 @@ public class Fragment_Add_Order_To_Cart extends Fragment implements OnMapReadyCa
                     activity.Back();
                     activity.Back();
                     activity.Back();
-                    activity.DisplayFragmentOrders();
+                    activity.display_Cart();
                 }
             }
         });
